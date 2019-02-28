@@ -1,3 +1,15 @@
+# Todo List App
+
+This is a TodoList app incorporating tutorials by The Net Ninja and Traversy Media. It utilizes React fundamentals such as components, state, props, events etc.
+
+There is both a local version (without a backend store) and a version that uses mockAPI (to mimic a backend and allowing for API calls).
+
+Reactstrap was used as the styling framework of choice.
+
+In addition to the below commands to run the application, the user should also add a .env file and provide their own link to mockAPI.
+
+#
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
