@@ -13,6 +13,10 @@ export default function Header() {
             <Link className="text-center text-primary" to="/">home</Link>
           </NavItem>
           |
+          <NavItem className="px-1">
+            <Link className="text-center text-primary" to="/api">api</Link>
+          </NavItem>
+          |
           <NavItem className="pl-1">
             <Link className="text-center text-primary" to="/about">about</Link>
           </NavItem>

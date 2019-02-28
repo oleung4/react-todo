@@ -6,7 +6,7 @@ import TodoItem from './TodoItem';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
 // const Todos = ({...} => {})
-function Todos ({todos, markComplete, delTodo}) { // using destructuring with the prop
+function TodosAPI ({todos, markComplete, delTodo}) { // using destructuring with the prop
   // logic regarding mapping through list
   const todoList = todos.length ? (
     todos.map(todo => {
@@ -28,4 +28,4 @@ function Todos ({todos, markComplete, delTodo}) { // using destructuring with th
   )
 }
 
-export default Todos;
+export default TodosAPI;

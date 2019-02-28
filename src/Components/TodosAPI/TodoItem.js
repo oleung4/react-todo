@@ -17,12 +17,24 @@ export class TodoItem extends Component {
     
   render() {
     // using destructuring
-    const { id, content } = this.props.todo;
+    const { id, title, completed } = this.props.todo;
+    // if(completed) {
+    //   return (
+    //     <div>
+    //       <p style={this.getStyle()}>
+    //         <Input type="checkbox" checked={this.state.checked} onChange={this.props.markComplete.bind(this, id)} /> {' '}
+    //         { title }
+    //         <Button onClick={this.props.delTodo.bind(this, id)} close />
+    //       </p>
+    //     </div>
+    //   )
+    // }
+
     return (
       <div>
         <p style={this.getStyle()}>
-          <Input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {' '}
-          { content }
+          <Input type="checkbox" checked={completed} onChange={this.props.markComplete.bind(this, id)} /> {' '}
+          { title }
           <Button onClick={this.props.delTodo.bind(this, id)} close />
         </p>
       </div>
