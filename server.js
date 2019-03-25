@@ -54,6 +54,17 @@ app.delete("/api/:id", (req, res) => {
     .catch(err => res.status(404).json({ notenotfound: "Note not found" }));
 });
 
+// @route   PUT api/:id
+// @desc    Update toggle
+app.put("/api/:id", (req, res) => {
+  // Update
+  Note.findByIdAndUpdate(
+    { _id: req.params.id }, // user is case sensitive!
+    { completed: req.body.completed },
+    { new: true }
+  ).then(note => res.json(note));
+});
+
 /////////////////////////////////////////////////
 
 const port = process.env.PORT || 5000;

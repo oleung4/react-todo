@@ -105,15 +105,29 @@ class App extends Component {
       );
   };
 
-  markCompleteAPI = id => {
-    this.setState({
-      jsonTodos: this.state.jsonTodos.map(todo => {
-        if (todo._id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
+  markCompleteAPI = (id, completed) => {
+    axios
+      .put(`/api/${id}`, {
+        completed: !completed
       })
-    });
+      .then(res =>
+        this.setState({
+          jsonTodos: this.state.jsonTodos.map(todo => {
+            if (todo._id === id) {
+              todo.completed = !todo.completed;
+            }
+            return todo;
+          })
+        })
+      );
+    // this.setState({
+    //   jsonTodos: this.state.jsonTodos.map(todo => {
+    //     if (todo._id === id) {
+    //       todo.completed = !todo.completed;
+    //     }
+    //     return todo;
+    //   })
+    // });
   };
 
   render() {

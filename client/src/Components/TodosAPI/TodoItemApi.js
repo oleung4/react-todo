@@ -36,7 +36,7 @@ export class TodoItemApi extends Component {
           <Input
             type="checkbox"
             checked={completed}
-            onChange={() => markComplete(_id)}
+            onChange={() => markComplete(_id, completed)}
           />{" "}
           {content}
           <Button
