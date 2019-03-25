@@ -20,9 +20,11 @@ mongoose
   .then(() => console.log("MongoDB connected!"))
   .catch(err => console.log(err));
 
+/////////////////////////////////////////////////
+
 app.get("/test", (req, res) => res.json({ msg: "all good" }));
 
-// @route   GET /
+// @route   GET /api
 // @desc    Get all posts
 app.get("/api", (req, res) => {
   Note.find()
@@ -30,7 +32,7 @@ app.get("/api", (req, res) => {
     .catch(err => res.status(404).json({ nonotesfound: "No notes found" }));
 });
 
-// @route   POST /
+// @route   POST /api
 // @desc    Create post
 app.post("/api", (req, res) => {
   const newNote = new Note({
@@ -38,9 +40,22 @@ app.post("/api", (req, res) => {
     content: req.body.content,
     completed: false
   });
-
   newNote.save().then(note => res.json(note));
 });
+
+// @route   DELETE api/:id
+// @desc    Delete post
+app.delete("/api/:id", (req, res) => {
+  Note.findById(req.params.id)
+    .then(note => {
+      // Delete
+      note.remove().then(() => res.json({ success: true }));
+    })
+    .catch(err => res.status(404).json({ notenotfound: "Note not found" }));
+});
+
+/////////////////////////////////////////////////
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {

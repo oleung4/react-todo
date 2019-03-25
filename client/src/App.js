@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Todos from "./Components/Todos/Todos";
 import AddTodo from "./Components/Todos/AddTodo";
-import TodosAPI from "./Components/TodosAPI/Todos";
-import AddTodoAPI from "./Components/TodosAPI/AddTodo";
+import TodosApi from "./Components/TodosAPI/TodosApi";
+import AddTodoApi from "./Components/TodosAPI/AddTodoApi";
 
 import Header from "./Components/Layout/Header";
 import About from "./Components/pages/About";
@@ -25,10 +25,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // axios.get(`${process.env.REACT_APP_API_URL}`)
-    //   .then(res => this.setState({
-    //     jsonTodos: res.data
-    //   }));
     axios.get("/api").then(res =>
       this.setState({
         jsonTodos: res.data
@@ -87,14 +83,13 @@ class App extends Component {
   //////////////// api handlers ////////////////
 
   // we want to adjust these handlers to make a post request to the rest api
-  // mockAPI (instead of jsonplaceholder) used to simulate having a backend
   delTodoAPI = id => {
     console.log(id);
-    // axios.delete(`${process.env.REACT_APP_API_URL}/${id}`).then(res =>
-    //   this.setState({
-    //     jsonTodos: [...this.state.jsonTodos.filter(todo => todo.id !== id)]
-    //   })
-    // );
+    axios.delete(`/api/${id}`).then(res =>
+      this.setState({
+        jsonTodos: [...this.state.jsonTodos.filter(todo => todo._id !== id)]
+      })
+    );
   };
 
   addTodoAPI = content => {
@@ -147,12 +142,12 @@ class App extends Component {
             path="/api"
             render={props => (
               <React.Fragment>
-                <TodosAPI
+                <TodosApi
                   todos={this.state.jsonTodos}
                   markComplete={this.markCompleteAPI}
                   delTodo={this.delTodoAPI}
                 />
-                <AddTodoAPI addTodo={this.addTodoAPI} />
+                <AddTodoApi addTodo={this.addTodoAPI} />
               </React.Fragment>
             )}
           />

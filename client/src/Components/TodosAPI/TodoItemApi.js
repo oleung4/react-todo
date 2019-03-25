@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input } from "reactstrap";
 
-export class TodoItem extends Component {
+export class TodoItemApi extends Component {
   // create styling logic to cross out item if checked
   getStyle = () => {
     return {
@@ -51,4 +51,4 @@ export class TodoItem extends Component {
   }
 }
 
-export default TodoItem;
+export default TodoItemApi;

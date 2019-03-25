@@ -1,12 +1,12 @@
 // just a functional component
 
 import React from "react";
-import TodoItem from "./TodoItem";
+import TodoItemApi from "./TodoItemApi";
 
 import { ListGroup, ListGroupItem } from "reactstrap";
 
 // const Todos = ({...} => {})
-function TodosAPI({ todos, markComplete, delTodo }) {
+function TodosApi({ todos, markComplete, delTodo }) {
   // using destructuring with the prop
   // logic regarding mapping through list
   const todoList = todos.length ? (
@@ -14,7 +14,11 @@ function TodosAPI({ todos, markComplete, delTodo }) {
       return (
         <ListGroupItem key={todo._id}>
           {/* add our onClick handler */}
-          <TodoItem todo={todo} markComplete={markComplete} delTodo={delTodo} />
+          <TodoItemApi
+            todo={todo}
+            markComplete={markComplete}
+            delTodo={delTodo}
+          />
         </ListGroupItem>
       );
     })
@@ -27,4 +31,4 @@ function TodosAPI({ todos, markComplete, delTodo }) {
   return <ListGroup>{todoList}</ListGroup>;
 }
 
-export default TodosAPI;
+export default TodosApi;
