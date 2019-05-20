@@ -5,4 +5,4 @@ I have included a basic version using state for storage as well as an additional
 
 First run 'npm install' in the root directory for backend dependencies, then cd into the client folder and run 'yarn install' (or 'npm install') for react dependencies.
 
-To start, run 'npm server' and 'yarn start' in their respective directories.
+To start, run 'node server' and 'yarn start' in their respective directories.
